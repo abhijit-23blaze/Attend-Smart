@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:lottie/lottie.dart'; // Add this package for animations
+import 'package:lottie/lottie.dart';
+
+import '../main.dart'; // Import main.dart for redirection
 
 class Home extends StatefulWidget {
   final String qrCode;
@@ -37,8 +39,11 @@ class HomeState extends State<Home> {
         isSuccess = true;
       });
       // Wait for 5 seconds and then navigate back to main.dart
-      Timer(Duration(seconds: 5), () {
-        Navigator.of(context).pushReplacementNamed('/'); // Assuming '/' is your main route
+      Timer(const Duration(seconds: 5), () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const MyApp()), // Navigate back to main.dart
+        );
       });
     } catch (e) {
       print("Error processing QR code: $e");
@@ -50,8 +55,11 @@ class HomeState extends State<Home> {
         SnackBar(content: Text("Error processing payment: $e")),
       );
       // Wait for 5 seconds and then navigate back to main.dart even if there's an error
-      Timer(Duration(seconds: 5), () {
-        Navigator.of(context).pushReplacementNamed('/');
+      Timer(const Duration(seconds: 5), () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const MyApp()), // Navigate back to main.dart
+        );
       });
     }
   }
@@ -111,29 +119,29 @@ class HomeState extends State<Home> {
                 height: 200,
               )
             else
-              Icon(Icons.error_outline, size: 100, color: Colors.red),
-            SizedBox(height: 20),
+              const Icon(Icons.error_outline, size: 100, color: Colors.red),
+            const SizedBox(height: 20),
             Text(
-              isProcessing ? 'Processing Payment...' :
-              isSuccess ? 'Payment Successful!' : 'Payment Failed',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              isProcessing ? 'Processing Attendance...' :
+              isSuccess ? 'Attendance Added Successfully!' : 'Attendance failed contact with the teacher',
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
-            Text(
-              'Amount: \$${widget.qrCode}',
+            const SizedBox(height: 10),
+            const Text(
+              '',
               style: TextStyle(fontSize: 18),
             ),
             if (trxHash != null && isSuccess)
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Transaction Hash:\n$trxHash',
-                  style: TextStyle(fontSize: 14),
+                  '',
+                  style: const TextStyle(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
               ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Redirecting in 5 seconds...',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),

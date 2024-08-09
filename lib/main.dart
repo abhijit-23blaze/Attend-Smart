@@ -77,20 +77,20 @@ class _MyAppState extends State<MyApp> {
             children: const [
               ListTile(
                 leading: Icon(Icons.person, color: Colors.deepPurple),
-                title: Text('John Doe', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                title: Text('Abhijit Patil', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
                 subtitle: Text('Student'),
               ),
               ListTile(
                 leading: Icon(Icons.confirmation_number, color: Colors.deepPurple),
-                title: Text('Roll No.: 123456', style: TextStyle(fontSize: 16)),
+                title: Text('Roll No.: 20332', style: TextStyle(fontSize: 16)),
               ),
               ListTile(
                 leading: Icon(Icons.school, color: Colors.deepPurple),
-                title: Text('Department: Computer Science', style: TextStyle(fontSize: 16)),
+                title: Text('Department: Electroincs', style: TextStyle(fontSize: 16)),
               ),
               ListTile(
                 leading: Icon(Icons.calendar_today, color: Colors.deepPurple),
-                title: Text('Year: 3rd', style: TextStyle(fontSize: 16)),
+                title: Text('Year: 2nd', style: TextStyle(fontSize: 16)),
               ),
             ],
           ),
@@ -120,6 +120,8 @@ class _MyAppState extends State<MyApp> {
     ];
 
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.grey[100],
@@ -129,7 +131,7 @@ class _MyAppState extends State<MyApp> {
           return Scaffold(
             appBar: AppBar(
               title: const Text(
-                '🪙 Block Roll',
+                'Attend Smart',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -141,6 +143,7 @@ class _MyAppState extends State<MyApp> {
                   icon: const Icon(Icons.person, size: 28),
                   onPressed: () => _showProfileDialog(context),
                 ),
+                const SizedBox(width: 10),
               ],
             ),
             body: Center(
@@ -157,7 +160,9 @@ class _MyAppState extends State<MyApp> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+
                         Expanded(
+
                           child: GridView.builder(
                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
