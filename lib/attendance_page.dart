@@ -7,36 +7,36 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class AttendancePage extends StatelessWidget {
-  const AttendancePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Attendance Page')),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Center(
-            child: Text(
-              'Welcome to the Attendance Page!',
-              style: TextStyle(fontSize: 24),
-            ),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const QRViewExample(),
-              ));
-            },
-            child: const Text('Open QR Scanner'),
-          ),
-        ],
-      ),
-    );
-  }
-}
+// class AttendancePage extends StatelessWidget {
+//   const AttendancePage({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: const Text('Attendance Page')),
+//       body: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: <Widget>[
+//           const Center(
+//             child: Text(
+//               'Welcome to the Attendance Page!',
+//               style: TextStyle(fontSize: 24),
+//             ),
+//           ),
+//           SizedBox(height: 20),
+//           ElevatedButton(
+//             onPressed: () {
+//               Navigator.of(context).push(MaterialPageRoute(
+//                 builder: (context) => const QRViewExample(),
+//               ));
+//             },
+//             child: const Text('Open QR Scanner'),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class QRViewExample extends StatefulWidget {
   const QRViewExample({Key? key}) : super(key: key);
@@ -73,31 +73,43 @@ class _QRViewExampleState extends State<QRViewExample> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   if (result != null)
+
+                    //BLOCK CHAIN LOGINC TO BE APPLIED HERE
+
+
+
                     Text(
                         'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
                   else
-                    const Text('Scan a code'),
+                    const Text('Scan the code'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+                      // Container(
+                      //   margin: const EdgeInsets.all(8),
+                      //   child: ElevatedButton(
+                      //       onPressed: () async {
+                      //         await controller?.toggleFlash();
+                      //         setState(() {});
+                      //       },
+                      //       child: FutureBuilder(
+                      //         future: controller?.getFlashStatus(),
+                      //         builder: (context, snapshot) {
+                      //           return Text('Flash: ${snapshot.data}');
+                      //         },
+                      //       )),
+                      // ),
                       Container(
                         margin: const EdgeInsets.all(8),
                         child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
+                          // decoration: InputDecoration(
+                          //   border: OutlineInputBorder(),
+                          //   hintText: 'Enter Code (optional)',
+                          //
+                          // ),
+
+
                             onPressed: () async {
                               await controller?.flipCamera();
                               setState(() {});
@@ -112,7 +124,8 @@ class _QRViewExampleState extends State<QRViewExample> {
                                   return const Text('loading');
                                 }
                               },
-                            )),
+                            )
+                        ),
                       )
                     ],
                   ),
@@ -126,20 +139,20 @@ class _QRViewExampleState extends State<QRViewExample> {
                           onPressed: () async {
                             await controller?.pauseCamera();
                           },
-                          child: const Text('pause',
+                          child: const Text('Submit',
                               style: TextStyle(fontSize: 20)),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.resumeCamera();
-                          },
-                          child: const Text('resume',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      )
+                      // Container(
+                      //   margin: const EdgeInsets.all(8),
+                      //   child: ElevatedButton(
+                      //     onPressed: () async {
+                      //       await controller?.resumeCamera();
+                      //     },
+                      //     child: const Text('resume',
+                      //         style: TextStyle(fontSize: 20)),
+                      //   ),
+                      // )
                     ],
                   ),
                 ],
