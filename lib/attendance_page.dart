@@ -1,7 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:web3dart/web3dart.dart';
+
 import 'ui/home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +66,18 @@ class _QRViewExampleState extends State<QRViewExample> {
 
   @override
   Widget build(BuildContext context) {
+
+    if (result != null) {
+      // Use postFrameCallback to ensure navigation happens after the build method completes
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home(qrCode: result!.code!), // Navigate to Home page
+          ),
+        );
+      });
+    }
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -74,7 +91,8 @@ class _QRViewExampleState extends State<QRViewExample> {
                 children: <Widget>[
                   if (result != null)
 
-                    //BLOCK CHAIN LOGINC TO BE APPLIED HERE
+
+
 
 
 
@@ -208,3 +226,5 @@ class _QRViewExampleState extends State<QRViewExample> {
     super.dispose();
   }
 }
+
+
